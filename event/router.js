@@ -8,6 +8,13 @@ router.post("/event", (req, res, next) => {
     .then(event => res.send(event))
     .catch(next);
 });
+
+router.get("/event", (req, res, next) => {
+  Event.findAll()
+    .then(events => res.send(events))
+    .catch(next);
+});
+
 router.get("/event/:eventId", (req, res, next) => {
   Event.findByPk(req.params.eventId)
     .then(event => {
